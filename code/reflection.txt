@@ -1,6 +1,18 @@
-Write your reflection here.
+I learned how the ETL process separates the work. The extract module gets messy
+data, the transform module handles coercion and calculations, and the display
+module formats the results. This lets all three reports reuse the same pipeline.
 
-See reflection.md for what makes a good reflection — be specific, use the
-terminology from this assignment (package, module, ETL, coercion, public API,
-relative import, accumulator, group by, unit vs. integration test), and make it
-actionable.
+The main thing I learned about coercion is that bad values should become zero
+instead of crashing the report. I also practiced using an accumulator for totals
+and a dictionary group by for summaries by item and by day. Products are sorted
+by revenue, while days are sorted chronologically.
+
+I learned that a package's `__init__.py` defines its public API. Relative imports
+let the reports use package functions without knowing which module they are in,
+while helper functions like the currency cleaner can stay private. Unit tests
+checked individual functions, and integration tests checked the whole ETL flow,
+package imports, seeded data, and exact report output.
+
+Next, I want to practice writing tests for empty inputs, ties, and more malformed
+values. For future reports, I will identify the needed public API first, write a
+unit test for the new transform logic, and then run the integration tests.
